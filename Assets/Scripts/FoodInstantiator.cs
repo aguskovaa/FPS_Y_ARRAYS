@@ -9,6 +9,10 @@ public class FoodInstantiator : MonoBehaviour
     public float interval;
     public RandomPlacement rp;
 
+    public int maxVeces;
+    public int Veces;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +27,13 @@ public class FoodInstantiator : MonoBehaviour
 
     void CloneFood()
     {
-        rp.SetRandomPosition();
-        GameObject prefab = alimentos[Random.Range(0,alimentos.Length)];
-        Instantiate(prefab, clonePoint.position, clonePoint.rotation);
+        if (Veces < maxVeces)
+        {
+            rp.SetRandomPosition();
+            GameObject prefab = alimentos[Random.Range(0,alimentos.Length)];
+            Instantiate(prefab, clonePoint.position, clonePoint.rotation);
+            Veces += 1;
+        }
+        
     }
 }
